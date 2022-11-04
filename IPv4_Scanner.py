@@ -1,12 +1,12 @@
 import requests
 import json
+import cred as cr
 
 ip_=input("Please enter an IPv4 address: ")
-API_Key=input("Please enter a VirusTotal API key: ")
 url = "https://www.virustotal.com/api/v3/ip_addresses/{}".format(ip_)
 headers = {
     "accept": "application/json",
-    "x-apikey": "{}".format(API_Key)
+    "x-apikey": "{}".format(cr.API_Key)
 }
 
 response = requests.get(url, headers=headers)

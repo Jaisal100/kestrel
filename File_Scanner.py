@@ -1,17 +1,17 @@
 import requests
 import json
 import base64
-import creds.py as cr
+import creds as cr
 
-url_=input("Please enter a URL: ")
+file_=input("Please enter a file location: ")
 url_id = base64.urlsafe_b64encode("{}".format(url_).encode()).decode().strip("=")
-url = "https://www.virustotal.com/api/v3/urls/{}".format(url_id)
+url = "https://www.virustotal.com/api/v3/files/scan"
 headers = {
     "accept": "application/json",
     "x-apikey": "{}".format(cr.API_Key)
 }
 
-response = requests.get(url, headers=headers)
+response = requests.post(url, headers=headers)
 
 data=response.text
 
